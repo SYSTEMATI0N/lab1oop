@@ -1,28 +1,41 @@
-#include "Module1.h"
-#include <cmath>
-#include <algorithm>
+#include "module1.h"
 
-void sort(doubleComparator_t compare, double* sequence, const int length)
+int getDigitSum(double num) {
+    std::string numStr = std::to_string(num);
+    
+    int i = 0;
+    int sum = 0;
+    bool dot = false;
+    while (numStr[i] != '\0') {
+        if (numStr[i] == '.')
+            dot = true;
+        else if (dot) {
+            sum += numStr[i] - '0';
+        }
+        ++i;
+    }
+    return sum;
+}
+
+bool ascending(double  a, double  b) {
+    double tmp;
+    double decimal_a = std::abs(std::modf(a, &tmp));
+    double decimal_b = std::abs(std::modf(b, &tmp));
+  
+    return getDigitSum(a) > getDigitSum(b);
+}
+void sort(double* sequence, bool (*comparisonFunc)(double, double), int lenght)
 {
-    for (int i = 0; i < length - 1; i++)
-    {
-        for (int j = 0; j < length - i - 1; j++)
-        {
-            double& a = sequence[j];
-            double& b = sequence[j + 1];
-            if (compare(a, b))
-                std::swap(a, b);
+    for (int i = 0; i < lenght - 1; ++i) {
+        for (int j = 0; j < lenght - i - 1; ++j) {
+            if (comparisonFunc(sequence[j], sequence[j + 1])) {
+                std::swap(sequence[j], sequence[j + 1]);
+            }
         }
     }
 }
 
-bool compare_decimal_ascending(double a, double b)
-{
-    double tmp;
-    double decimal_a = std::abs(std::modf(a, &tmp));
-    double decimal_b = std::abs(std::modf(b, &tmp));
-    return decimal_a < decimal_b;
-}
+
 
 Results calculate_results(const double* sequence, const int length)
 {

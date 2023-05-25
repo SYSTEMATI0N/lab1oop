@@ -1,10 +1,11 @@
-﻿#include <iostream>
+﻿#include "module1.h"
+#include <iostream>
 #include <string>
 #include <fstream>
-#include <tuple>
-#include <filesystem>
 
-#include "Module1.h"
+
+
+
 
 using namespace std;
 
@@ -37,7 +38,7 @@ int main(int argc, char** argv)
     print_sequence(input, input_length);
 
     // Sort the sequence using the provided sorting criterion
-    sort(compare_decimal_ascending, input, input_length);
+    sort(input,ascending, input_length);
 
     cout << "After sorting by decimal part:\n";
     print_sequence(input, input_length);

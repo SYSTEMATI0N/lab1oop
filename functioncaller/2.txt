@@ -1,5 +1,5 @@
--2.5 3.14 0.123 
-Maximum: 3.14
-Minimum: -2.5
-Maximum Index: 1
-Minimum Index: 0
+30.13 3.14 0.123 0.12111 -2.5323 
+Maximum: 30.13
+Minimum: -2.5323
+Maximum Index: 0
+Minimum Index: 4
